@@ -28,11 +28,13 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
 
-      - name: 'Resolve Project Dependencies Using Yarn'
+      - name: 'Resolve Project Dependencies Using Npm'
         shell: bash
         run: |
           pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
-          yarn
+          npm install
+          npm run build --if-present
+          npm run test --if-present
           popd
 
       - name: Zip artifact for deployment
@@ -65,9 +67,9 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_5A6928A0C3954BF1811DB16B9CD0BCF8 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_4BA4528BA71C49EAAFC7EB4BFAB52C54 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_953F94DE9E4C4AE4BF6481DC17050EDE }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_380F28AE6BD041D3A71C8CAA691E0C94 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_79A5D82F1DA34FF6A225A934C4F65D20 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_F6530077B4A84E4D8B0ECEFC6096A7F8 }}
 
       - name: 'Run Azure Functions Action'
         uses: Azure/functions-action@v1
