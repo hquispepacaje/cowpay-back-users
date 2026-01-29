@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "sqlserver"
+}
+
+model User {
+  id          String    @id @default(uuid())
+  email       String    @unique
+  name        String
+  avatarUrl   String?
+  
+  // Relaciones pendientes de definir sus modelos
+  // balance     Balance?
+  // groups      GroupMember[]
+  // contacts    Contact[]   @relation("UserContacts")
+  // contactOf   Contact[]   @relation("ContactOf")
+
+  createdAt   DateTime  @default(now())
+}

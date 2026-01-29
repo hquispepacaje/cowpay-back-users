@@ -1,0 +1,8 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "DATABASE_URL": "sqlserver://<SERVIDOR-AZURE>.database.windows.net:1433;database=<NOMBRE-DB>;authentication=ActiveDirectoryDefault;encrypt=true"
+  }
+}
