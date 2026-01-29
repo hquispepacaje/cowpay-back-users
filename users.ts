@@ -56,6 +56,9 @@ app.http('getUserById', {
     authLevel: 'anonymous',
     handler: async (request: HttpRequest, context: InvocationContext): Promise<HttpResponseInit> => {
         const id = request.params.id;
+        if (!id) {
+            return { status: 400, body: "ID de usuario requerido." };
+        }
         try {
             const user = await prisma.user.findUnique({
                 where: { id }
@@ -77,6 +80,9 @@ app.http('updateUser', {
     authLevel: 'anonymous',
     handler: async (request: HttpRequest, context: InvocationContext): Promise<HttpResponseInit> => {
         const id = request.params.id;
+        if (!id) {
+            return { status: 400, body: "ID de usuario requerido." };
+        }
         try {
             const body: any = await request.json();
             
@@ -104,6 +110,9 @@ app.http('deleteUser', {
     authLevel: 'anonymous',
     handler: async (request: HttpRequest, context: InvocationContext): Promise<HttpResponseInit> => {
         const id = request.params.id;
+        if (!id) {
+            return { status: 400, body: "ID de usuario requerido." };
+        }
         try {
             await prisma.user.delete({
                 where: { id }
