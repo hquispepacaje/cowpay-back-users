@@ -1,5 +1,5 @@
 import { app, HttpRequest, HttpResponseInit, InvocationContext } from "@azure/functions";
-import { prisma } from "./prisma";
+import { prisma } from "../prisma";
 
 // 1. CREATE (POST)
 app.http('createUser', {
