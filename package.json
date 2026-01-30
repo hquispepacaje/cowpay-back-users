@@ -2,7 +2,7 @@
   "name": "cowpay-back-users",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/src/functions/*.js",
+  "main": "dist/users.js",
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
